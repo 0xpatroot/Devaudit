@@ -263,7 +263,7 @@ winget install devaudit
 ### From Source
 
 ```bash
-git clone https://github.com/devaudit-project/devaudit
+git clone https://github.com/0xpatroot/Devaudit
 cd devaudit
 pip install -e .
 ```
@@ -386,7 +386,7 @@ Perfect for first-time contributors:
 ```bash
 # 1. Fork the repo
 # 2. Clone your fork
-git clone https://github.com/YOUR-GITHUB-USERNAME/devaudit
+git clone https://github.com/0xpatroot/devaudit
 
 # 3. Create a branch
 git checkout -b feature/add-gitlab-token-pattern
@@ -500,7 +500,7 @@ That's all you need to add a new security check! Open a PR and we'll merge it. â
 
 If you discover a security vulnerability in DevAudit itself, please do **not** open a public issue.
 
-Instead, email: **security@devaudit-project.org**
+*
 
 We'll respond within 72 hours and credit you in our security advisories.
 
