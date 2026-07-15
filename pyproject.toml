@@ -33,10 +33,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/devaudit-project/devaudit"
-Repository = "https://github.com/devaudit-project/devaudit"
-Documentation = "https://github.com/devaudit-project/devaudit#readme"
-"Bug Tracker" = "https://github.com/devaudit-project/devaudit/issues"
+Homepage = "https://github.com/0xpatroot/Devaudit"
+Repository = "https://github.com/0xpatroot/Devaudit"
+Documentation = "https://github.com/0xpatroot/devaudit#readme"
+"Bug Tracker" = "https://github.com/0xpatroot/Devaudit/issues"
 
 [project.optional-dependencies]
 dev = [
