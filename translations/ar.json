@@ -1,0 +1,23 @@
+{
+  "cli.scanning": "جاري المسح...",
+  "cli.scanning_secrets": "🔍 جاري المسح عن البيانات الحساسة...",
+  "cli.scanning_deps": "📦 جاري فحص الاعتماديات...",
+  "cli.scanning_system": "🖥️  فحص النظام...",
+  "cli.scanning_git": "🔁 جاري فحص تاريخ Git...",
+  "cli.scanning_network": "🌐 فحص الشبكة وشهادات SSL...",
+  "cli.scanning_privacy": "📊 فحص الخصوصية...",
+  "cli.found_secrets": "تم العثور على {count} من المعلومات الحساسة المحتملة",
+  "cli.no_issues": "لم يتم العثور على مشكلات. مشروعك يبدو آمنًا! ✅",
+  "cli.report_saved": "تم حفظ التقرير الكامل في: {path}",
+  "cli.remediation_tip": "💡 قم بتشغيل `devaudit fix` لإصلاح المشكلات القابلة للإصلاح تلقائيًا.",
+  "cli.banner": "🛡️  DevAudit إصدار v{version} — تقرير فحص الأمان",
+  "cli.project": "📁 المشروع: {project}",
+  "cli.date": "📅 التاريخ: {date}",
+  "cli.summary": "📊 الملخص",
+  "cli.summary_counts": "  🔴 حرجة: {critical}   🟠 عالية: {high}   🟡 متوسطة: {medium}   🟢 منخفضة: {low}   ℹ️ معلومات: {info}",
+  "cli.fix_success": "تم إصلاح المشكلة بنجاح: {issue}",
+  "cli.fix_fail": "فشل إصلاح المشكلة: {issue}. السبب: {reason}",
+  "cli.not_git_repo": "خطأ: {path} ليس مستودع git.",
+  "cli.invalid_url": "خطأ: {url} ليس اسم مضيف أو رابطًا صالحًا.",
+  "cli.error": "خطأ: {error}"
+}

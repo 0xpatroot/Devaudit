@@ -1,0 +1,23 @@
+{
+  "cli.scanning": "Scanning...",
+  "cli.scanning_secrets": "🔍 SCANNING FOR SECRETS...",
+  "cli.scanning_deps": "📦 CHECKING DEPENDENCIES...",
+  "cli.scanning_system": "🖥️  SYSTEM AUDIT...",
+  "cli.scanning_git": "🔁 SCANNING GIT HISTORY...",
+  "cli.scanning_network": "🌐 NETWORK & SSL INSPECTOR...",
+  "cli.scanning_privacy": "📊 PRIVACY AUDIT...",
+  "cli.found_secrets": "Found {count} potential secret(s)",
+  "cli.no_issues": "No issues found. Your project looks secure! ✅",
+  "cli.report_saved": "Full report saved to: {path}",
+  "cli.remediation_tip": "💡 Run `devaudit fix` to automatically remediate fixable issues.",
+  "cli.banner": "🛡️  DevAudit v{version} — Security Audit Report",
+  "cli.project": "📁 Project: {project}",
+  "cli.date": "📅 Date: {date}",
+  "cli.summary": "📊 SUMMARY",
+  "cli.summary_counts": "  🔴 Critical: {critical}   🟠 High: {high}   🟡 Medium: {medium}   🟢 Low: {low}   ℹ️ Info: {info}",
+  "cli.fix_success": "Successfully remediated issue: {issue}",
+  "cli.fix_fail": "Failed to remediate issue: {issue}. Reason: {reason}",
+  "cli.not_git_repo": "Error: {path} is not a git repository.",
+  "cli.invalid_url": "Error: {url} is not a valid hostname or URL.",
+  "cli.error": "Error: {error}"
+}

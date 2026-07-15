@@ -1,0 +1,603 @@
+Metadata-Version: 2.4
+Name: devaudit
+Version: 1.0.0
+Summary: Open Source Developer Security & Privacy Audit CLI
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: click>=8.0.0
+Requires-Dist: rich>=12.0.0
+Requires-Dist: psutil>=5.9.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: ruff>=0.0.200; extra == "dev"
+Dynamic: license-file
+
+<div align="center">
+
+<h1>🛡️ DevAudit</h1>
+<p><strong>Open Source Developer Security & Privacy Audit CLI</strong></p>
+
+<p>
+  <a href="https://github.com/your-username/devaudit/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-blue" alt="Cross Platform">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/Lang-Python%20%7C%20Node.js%20%7C%20Rust-orange" alt="Language">
+  </a>
+  <a href="#">
+    <img src="https://img.shields.io/badge/Languages-🌍%2015+-purple" alt="Multilingual">
+  </a>
+</p>
+
+<p><em>"Security shouldn't be a privilege. DevAudit is free, local, and built for every developer."</em></p>
+
+---
+
+**[Getting Started](#-installation)** •
+**[Features](#-features)** •
+**[Why DevAudit](#-why-devaudit)** •
+**[Contribute](#-contributing)** •
+**[Roadmap](#-roadmap)** •
+**[Community](#-community)**
+
+</div>
+
+---
+
+## 📖 What is DevAudit?
+
+**DevAudit** is a free, offline, open-source command-line tool that helps developers and individuals audit their:
+
+- 🔐 **Code repositories** — detect exposed secrets, API keys, and hardcoded passwords
+- 📦 **Project dependencies** — identify packages with known CVEs
+- 🖥️ **System configuration** — find dangerous open ports, weak permissions, and outdated services
+- 🌐 **Network & SSL** — verify TLS configurations and detect DNS issues
+- 🔁 **Git history** — scan commit history for accidentally pushed credentials
+- 📊 **Privacy settings** — identify apps sending data without consent
+
+Everything runs **100% locally**. No data is ever uploaded. No account required. No subscription.
+
+---
+
+## 🌍 Why DevAudit?
+
+### The Problem
+
+Security tools are either:
+- 💸 **Expensive** — Enterprise tools cost thousands of dollars per year
+- ☁️ **Cloud-dependent** — They upload your code to third-party servers
+- 🧩 **Complex** — Hard to install, configure, and use for individual developers
+- 🌐 **English-only** — Excludes hundreds of millions of non-English developers
+
+### Our Solution
+
+DevAudit is:
+- ✅ **100% Free** — MIT licensed, forever
+- ✅ **Fully Offline** — All checks run locally, nothing leaves your machine
+- ✅ **Simple** — One command to get started
+- ✅ **Multilingual** — Arabic, English, French, Spanish, Hindi, and 10+ more languages
+- ✅ **Actionable** — Doesn't just report issues — it helps you fix them
+
+### Who Is This For?
+
+| User Type | How DevAudit Helps |
+|---|---|
+| 👨‍💻 Independent Developers | Audit projects before going to production |
+| 🏢 Small Businesses | Affordable security without hiring a consultant |
+| 📰 Journalists & Activists | Protect sensitive digital communications |
+| 🎓 Students | Learn security best practices hands-on |
+| 🌍 Developers in Emerging Markets | Access enterprise-grade security for free |
+| 🏥 NGOs & Nonprofits | Secure sensitive beneficiary and donor data |
+
+---
+
+## ✨ Features
+
+### 🔍 1. Secret Scanner
+
+Detect accidentally exposed credentials in your codebase before they reach production or public repositories.
+
+```bash
+devaudit secrets ./my-project
+```
+
+**Detects:**
+- AWS / GCP / Azure API keys
+- GitHub / GitLab tokens
+- Private keys (RSA, DSA, EC)
+- Database connection strings
+- JWT secrets
+- .env file exposure
+- 200+ secret patterns (and growing)
+
+---
+
+### 📦 2. Dependency Vulnerability Scanner
+
+Scan your project's dependencies against the National Vulnerability Database (NVD) and OSV.
+
+```bash
+devaudit deps ./package.json
+devaudit deps ./requirements.txt
+devaudit deps ./Cargo.toml
+devaudit deps ./go.mod
+```
+
+**Supports:** npm, PyPI, crates.io, RubyGems, Maven, Go modules
+
+---
+
+### 🖥️ 3. System Security Audit
+
+Check your operating system configuration for common security misconfigurations.
+
+```bash
+devaudit system
+```
+
+**Checks:**
+- Open ports and listening services
+- File and directory permissions
+- Outdated software with known CVEs
+- SSH configuration weaknesses
+- Firewall rules
+- User account security
+- Disk encryption status
+
+---
+
+### 🔁 4. Git History Audit
+
+Scan your entire git commit history — not just the current state — for credentials that may have been removed but still exist in history.
+
+```bash
+devaudit git .
+devaudit git . --depth=500
+```
+
+---
+
+### 🌐 5. Network & SSL Inspector
+
+Verify your server's SSL/TLS configuration, check for weak cipher suites, and validate DNS security settings.
+
+```bash
+devaudit network example.com
+devaudit ssl example.com:443
+```
+
+---
+
+### 📊 6. Privacy Audit
+
+Identify applications and processes on your system that are making unexpected network connections or accessing sensitive data without clear justification.
+
+```bash
+devaudit privacy
+```
+
+---
+
+### 📝 7. Report Generation
+
+Export a full audit report in multiple formats — useful for sharing with your team or keeping records.
+
+```bash
+devaudit report --format=pdf --output=audit-report.pdf
+devaudit report --format=html --output=audit-report.html
+devaudit report --format=json --output=audit-report.json
+```
+
+---
+
+### 🔧 8. Auto-Remediation
+
+Don't just detect — fix. DevAudit can automatically fix certain common issues with your permission.
+
+```bash
+devaudit fix --issue=ssh-weak-keys
+devaudit fix --issue=open-ports
+```
+
+---
+
+### 🔌 9. CI/CD Integration
+
+Integrate DevAudit into your pipeline to prevent security issues from reaching production.
+
+**GitHub Actions:**
+
+```yaml
+# .github/workflows/security.yml
+name: DevAudit Security Check
+
+on: [push, pull_request]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install DevAudit
+        run: pip install devaudit
+      - name: Run Security Audit
+        run: devaudit scan . --fail-on=HIGH
+```
+
+**GitLab CI:**
+
+```yaml
+security_audit:
+  stage: test
+  script:
+    - pip install devaudit
+    - devaudit scan . --fail-on=HIGH
+```
+
+---
+
+## 📦 Installation
+
+### Using pip (Python)
+
+```bash
+pip install devaudit
+```
+
+### Using npm (Node.js)
+
+```bash
+npm install -g devaudit
+```
+
+### Using cargo (Rust)
+
+```bash
+cargo install devaudit
+```
+
+### Using Homebrew (macOS/Linux)
+
+```bash
+brew install devaudit
+```
+
+### Using winget (Windows)
+
+```bash
+winget install devaudit
+```
+
+### From Source
+
+```bash
+git clone https://github.com/your-username/devaudit
+cd devaudit
+pip install -e .
+```
+
+---
+
+## 🚀 Quick Start
+
+```bash
+# Audit your entire current project
+devaudit scan .
+
+# Quick secrets check only
+devaudit secrets .
+
+# Full system audit
+devaudit system
+
+# Check a specific dependency file
+devaudit deps ./package.json
+
+# Get help
+devaudit --help
+
+# Set language (Arabic example)
+devaudit --lang=ar scan .
+```
+
+### Example Output
+
+```
+🛡️  DevAudit v1.0.0 — Security Audit Report
+============================================
+📁 Project: ./my-awesome-app
+📅 Date: 2025-08-01 14:32:11
+
+🔍 SCANNING FOR SECRETS...
+
+  ⚠️  HIGH   .env (line 12): AWS_SECRET_KEY detected
+  ⚠️  HIGH   config/db.js (line 3): Database password hardcoded
+  ℹ️  INFO   .gitignore: .env is properly excluded ✓
+
+📦 CHECKING DEPENDENCIES...
+
+  ✅ 142 packages scanned
+  ❌  3 vulnerabilities found:
+     • lodash@4.17.15 — CVE-2021-23337 (HIGH)
+     • axios@0.21.0  — CVE-2021-3749  (MEDIUM)
+     • glob-parent@5.1.0 — CVE-2020-28469 (MEDIUM)
+
+🖥️  SYSTEM AUDIT...
+
+  ✅ Firewall: Active
+  ⚠️  SSH: PasswordAuthentication is enabled (risk: brute force)
+  ✅ Disk encryption: Enabled
+  ⚠️  Port 3306 (MySQL): Open to all interfaces
+
+📊 SUMMARY
+  🔴 Critical: 0   🟠 High: 2   🟡 Medium: 2   🟢 Low: 1
+  
+💡 Run `devaudit fix` to automatically remediate fixable issues.
+📝 Full report saved to: devaudit-report-20250801.html
+```
+
+---
+
+## 🗺️ Roadmap
+
+### v1.0 — Foundation ✅ (Current)
+- [x] Secret scanner (200+ patterns)
+- [x] Dependency vulnerability check (npm, PyPI, cargo, rubygems)
+- [x] System security audit (Linux, macOS, Windows)
+- [x] Git history scanning
+- [x] Report export (PDF, HTML, JSON)
+- [x] English & Arabic language support
+
+### v1.5 — Integration & Expansion
+- [ ] GitHub Actions marketplace action
+- [ ] Pre-commit hook integration
+- [ ] VS Code extension
+- [ ] Docker container scan
+- [ ] Kubernetes configuration audit
+- [ ] 10+ additional languages
+
+### v2.0 — Intelligence
+- [ ] AI-powered remediation suggestions
+- [ ] Custom rule engine (write your own patterns)
+- [ ] Team dashboard (local, self-hosted)
+- [ ] Historical trend tracking
+- [ ] Compliance templates (GDPR, SOC 2, ISO 27001, PCI DSS)
+
+### v2.5 — Community & Ecosystem
+- [ ] Community-contributed security checks database
+- [ ] Plugin system for third-party integrations
+- [ ] Mobile companion app (iOS/Android)
+
+---
+
+## 🤝 Contributing
+
+**We welcome contributions from everyone — beginners and experts alike!**
+
+DevAudit's strength comes from its community. Here are ways you can contribute:
+
+### 🌟 Good First Issues
+
+Perfect for first-time contributors:
+
+| Task | Difficulty | Skills Needed |
+|---|---|---|
+| Add a new secret pattern | ⭐ Easy | Regex basics |
+| Fix a typo or improve docs | ⭐ Easy | None |
+| Translate to your language | ⭐ Easy | Your native language |
+| Write a unit test | ⭐⭐ Medium | Python/JS/Rust |
+| Add OS-specific security check | ⭐⭐ Medium | OS knowledge |
+| Improve report formatting | ⭐⭐ Medium | HTML/CSS |
+
+### How to Contribute
+
+```bash
+# 1. Fork the repo
+# 2. Clone your fork
+git clone https://github.com/YOUR-USERNAME/devaudit
+
+# 3. Create a branch
+git checkout -b feature/add-gitlab-token-pattern
+
+# 4. Make your changes
+# 5. Run the tests
+pytest tests/
+
+# 6. Commit and push
+git add .
+git commit -m "feat: add GitLab personal access token detection"
+git push origin feature/add-gitlab-token-pattern
+
+# 7. Open a Pull Request — we'll review within 48 hours!
+```
+
+### 🌍 Help Us Translate DevAudit
+
+DevAudit should be accessible to developers worldwide. Help us translate:
+
+```
+translations/
+  en/  ← English (complete)
+  ar/  ← Arabic (complete)
+  fr/  ← French (in progress)
+  es/  ← Spanish (needs help!)
+  zh/  ← Chinese (needs help!)
+  hi/  ← Hindi (needs help!)
+  pt/  ← Portuguese (needs help!)
+  de/  ← German (needs help!)
+  ru/  ← Russian (needs help!)
+  ... your language here!
+```
+
+No coding skills required! Just edit a JSON file.
+
+### 📋 Contribution Guidelines
+
+Please read our [CONTRIBUTING.md](CONTRIBUTING.md) before opening a PR. Key points:
+- Follow the existing code style
+- Write tests for new features
+- Update documentation
+- Add your name to [CONTRIBUTORS.md](CONTRIBUTORS.md)
+
+---
+
+## 🏆 Contributors
+
+DevAudit is built by the community, for the community.
+
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+<!-- This section is auto-updated. Add yourself in CONTRIBUTORS.md! -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+**Want to see your name here?** Check out our [good first issues](https://github.com/your-username/devaudit/labels/good%20first%20issue)!
+
+---
+
+## 🏗️ Architecture
+
+DevAudit is designed to be modular, making it easy to add new checks:
+
+```
+devaudit/
+├── core/
+│   ├── scanner.py          # Core scanning engine
+│   ├── reporter.py         # Report generation
+│   └── config.py           # Configuration management
+├── modules/
+│   ├── secrets/            # Secret detection patterns
+│   ├── dependencies/       # Dependency vulnerability checks
+│   ├── system/             # System audit checks
+│   ├── network/            # Network & SSL checks
+│   ├── git/                # Git history scanner
+│   └── privacy/            # Privacy audit checks
+├── translations/           # i18n language files
+│   ├── en.json
+│   ├── ar.json
+│   └── ...
+├── plugins/                # Community plugins directory
+├── tests/                  # Test suite
+└── cli.py                  # CLI entry point
+```
+
+### Adding a New Security Check
+
+```python
+# modules/secrets/my_new_pattern.py
+
+from devaudit.core.base_check import BaseCheck, Severity
+
+class MyNewCheck(BaseCheck):
+    """
+    Detects [describe what it detects].
+    Reference: [link to vulnerability documentation]
+    """
+    
+    name = "my-new-check"
+    description = "Detects [what it detects]"
+    severity = Severity.HIGH
+    
+    # Simple regex pattern (most checks are this simple!)
+    patterns = [
+        r"my_secret_pattern_[A-Z0-9]{32}",
+    ]
+```
+
+That's all you need to add a new security check! Open a PR and we'll merge it. ✅
+
+---
+
+## 🛡️ Security Policy
+
+If you discover a security vulnerability in DevAudit itself, please do **not** open a public issue.
+
+Instead, email: **security@devaudit-project.org**
+
+We'll respond within 72 hours and credit you in our security advisories.
+
+See [SECURITY.md](SECURITY.md) for details.
+
+---
+
+## 📊 Project Stats & OpenSSF
+
+DevAudit is committed to maintaining the highest security standards for an open-source project:
+
+- 📋 **OpenSSF Best Practices Badge**: [Passing]
+- 🔍 **OpenSSF Scorecard**: [Score]
+- 📈 **OpenSSF Criticality Score**: Targeting 0.4+
+- 🔒 **Signed releases** with GPG
+- 📦 **SBOM** (Software Bill of Materials) published with every release
+- 🤖 **Automated dependency updates** via Dependabot
+- ✅ **Two-person review** required for all merges to main
+
+---
+
+## 💬 Community
+
+We believe in building an inclusive, welcoming community:
+
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/your-username/devaudit/discussions)
+- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/your-username/devaudit/issues)
+- 💡 **Feature Requests**: [GitHub Issues (feature)](https://github.com/your-username/devaudit/issues/new?template=feature_request.md)
+- 🌍 **Translations**: [See translations/](translations/)
+- 📢 **Announcements**: [Watch this repo](https://github.com/your-username/devaudit) for releases
+
+**Code of Conduct**: We follow the [Contributor Covenant](CODE_OF_CONDUCT.md). Be kind, be inclusive, be excellent to each other. 🤝
+
+---
+
+## 📄 License
+
+**MIT License** — Free for everyone, forever.
+
+```
+Copyright (c) 2025 DevAudit Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+```
+
+---
+
+## 🙏 Acknowledgments
+
+DevAudit stands on the shoulders of giants:
+
+- [TruffleHog](https://github.com/trufflesecurity/trufflehog) — Inspiration for git scanning
+- [Safety](https://github.com/pyupio/safety) — Python dependency checking approach
+- [Lynis](https://github.com/CISOfy/lynis) — System audit methodology
+- [OSV](https://osv.dev/) — Open vulnerability database
+- All our amazing [contributors](CONTRIBUTORS.md) ❤️
+
+---
+
+<div align="center">
+
+**⭐ If DevAudit helped you, please star this repo! It helps others find it. ⭐**
+
+Made with ❤️ by developers, for developers — across the globe.
+
+[Report Bug](https://github.com/your-username/devaudit/issues) •
+[Request Feature](https://github.com/your-username/devaudit/issues) •
+[Contribute](CONTRIBUTING.md)
+
+</div>

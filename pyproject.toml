@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "devaudit"
+version = "1.0.0"
+description = "Offline CLI Developer Security & Privacy Audit Tool"
+readme = "README.md"
+authors = [
+    { name = "DevAudit Community", email = "talk with me   in github" }
+]
+keywords = ["security", "audit", "secrets", "cve", "privacy", "static-analysis", "cli", "offline"]
+requires-python = ">=3.9"
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Security",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "click>=8.0.0",
+    "rich>=12.0.0",
+    "psutil>=5.9.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/devaudit-project/devaudit"
+Repository = "https://github.com/devaudit-project/devaudit"
+Documentation = "https://github.com/devaudit-project/devaudit#readme"
+"Bug Tracker" = "https://github.com/devaudit-project/devaudit/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "ruff>=0.0.200",
+]
+
+[project.scripts]
+devaudit = "devaudit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["devaudit*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
